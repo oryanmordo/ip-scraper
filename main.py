@@ -15,15 +15,12 @@ from utils.utils import recursive_dict
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: Initialize the session
     PersistentSession.session = aiohttp.ClientSession()
     yield
-    # Shutdown: Close the session
     await PersistentSession.session.close()
 
 app = FastAPI(lifespan=lifespan)
 
-# --- Helper Logic ---
 @time_execution
 async def fetch_ip_from_data_source(ip: str, api_url: str):
     session = PersistentSession.session
@@ -33,21 +30,11 @@ async def fetch_ip_from_data_source(ip: str, api_url: str):
         #     return None
         return await response.json()
 
-# --- Routes ---
-@app.get("/")
-def read_root():
-    return {"message": "hello world"}
-
-
 @app.get("/id/{ip}")
 async def osint_ip(ip: str):  # Changed to 'async def'
     start_time = time.time_ns()
-    api_names = [
-        "ipinfo",
-        "ip-api",
-    ]
 
-    tasks = [DataFetcher.get_fetcher(name).fetch(ip) for name in api_names]
+    tasks = [data_fetcher().fetch(ip) for data_fetcher in DataFetcher.__subclasses__()]
 
     if not tasks:
         raise HTTPException(status_code=404, detail="No valid fetchers found")
