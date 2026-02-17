@@ -104,11 +104,11 @@ output =
 
 
 WORKS ON FAIL:
-![img.png](img.png)
-![img_1.png](img_1.png)
+![img.png](readme_photos/img.png)
+![img_1.png](readme_photos/img_1.png)
 
 WORKS ON SUCCESS:
-![img_2.png](img_2.png)
+![img_2.png](readme_photos/img_2.png)
 
 CACHE WORKS:
-![img_3.png](img_3.png)
+![img_3.png](readme_photos/img_3.png)
