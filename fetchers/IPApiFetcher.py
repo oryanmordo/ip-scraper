@@ -8,7 +8,7 @@ class IPApiFetcher(DataFetcher):
     api_url = "http://ip-api.com/json/"
 
     @time_execution
-    @AsyncTTL(time_to_live=5)
+    @AsyncTTL(time_to_live=10)
     async def fetch(self,ip: str):
         session = PersistentSession.session
         # Added a timeout so your API doesn't hang forever if the source is slow
