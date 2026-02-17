@@ -1,3 +1,5 @@
+from cache import AsyncTTL
+
 from utils.Decorators import time_execution
 from utils.SessionHolder import PersistentSession
 from .DataFetcher import DataFetcher
@@ -6,6 +8,7 @@ class IPInfoFetcher(DataFetcher):
     api_url = "https://api.ipinfo.io/lite/"
 
     @time_execution
+    @AsyncTTL(time_to_live=5)
     async def fetch(self,ip: str):
         token = "199a34a5eb0b16"
 
