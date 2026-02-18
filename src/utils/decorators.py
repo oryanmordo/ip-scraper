@@ -10,7 +10,7 @@ def time_execution(func):
 
         duration = (time.time_ns() - start_time) // 1_000_000
 
-        raw_status = response.get("status") if isinstance(response, dict) else "failed"
+        raw_status = response.get("st   atus") if isinstance(response, dict) else "failed"
         api_status = "success" if raw_status in ["success", None] else "failed"
 
         metric = {
