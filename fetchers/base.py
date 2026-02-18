@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 
-from utils.Logger import logger
+from utils.logger import logger
 
 class DataFetcher(ABC):
 

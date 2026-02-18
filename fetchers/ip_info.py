@@ -1,8 +1,8 @@
 from cache import AsyncTTL
 
-from utils.Decorators import time_execution
-from utils.SessionHolder import PersistentSession
-from .DataFetcher import DataFetcher
+from utils.decorators import time_execution
+from utils.session_holder import PersistentSession
+from .base import DataFetcher
 
 class IPInfoFetcher(DataFetcher):
     api_url = "https://api.ipinfo.io/lite/"
