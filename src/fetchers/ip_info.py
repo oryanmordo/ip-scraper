@@ -10,6 +10,7 @@ class IPInfoFetcher(DataFetcher):
     @time_execution
     @AsyncTTL(time_to_live=10)
     async def fetch(self,ip: str):
+        # TODO: on a bigger project this would be pulled from a vault or a secret object
         token = "199a34a5eb0b16"
 
         headers = {"Authorization": f"Bearer {token}"}
