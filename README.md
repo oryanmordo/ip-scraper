@@ -13,6 +13,11 @@ docker-compose up -d
 uvicorn main:app --reload
 ```
 
+### To shut down the Redis container
+```bash
+docker-compose down
+```
+
 ## Specifications
 -  The system exposes an HTTP API that accepts a single IP Address as input.
 -  The system returns an HTTP response with JSON data in the body.
