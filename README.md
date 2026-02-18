@@ -9,12 +9,12 @@ uvicorn main:app --reload
 ```
 
 ## Specifications
-- [ ] The system exposes an HTTP API that accepts a single IP Address as input.
-- [ ] The system returns an HTTP response with JSON data in the body.
-- [ ] Response JSON consists of two parts:
+-  The system exposes an HTTP API that accepts a single IP Address as input.
+-  The system returns an HTTP response with JSON data in the body.
+-  Response JSON consists of two parts:
     - **Raw data**: Responses as fetched from the sources.
     - **Metrics**: Execution time for each source.
-- [ ] The system caches responses for 10 seconds.
+-  The system caches responses for 10 seconds.
 
 ### External APIs
 - **ip-api**: [https://ip-api.com/docs/api:json](https://ip-api.com/docs/api:json)
@@ -36,8 +36,8 @@ Query `http://ip-api.com/json/176.228.193.161` (and the other API).
 - **Scalability**: Build for scale (currently 2 APIs, but potentially many more in the future).
 
 ### Key Requirements
-- [ ] Correct Output
-- [ ] Caching
+- [x] Correct Output
+- [x] Caching
 
 ## Output Example
 ```json
