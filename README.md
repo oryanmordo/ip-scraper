@@ -4,6 +4,11 @@
 Design and implement a system performing very basic OSINT (Open Source Intelligence) on a given IP Address. This system accepts an IP Address as input, fetches data from multiple online APIs, and aggregates the responses into a single JSON response.
 
 ## How to Run
+### create Redis instance:
+```bash
+docker-compose up -d
+```
+### Run the application
 ```bash
 uvicorn main:app --reload
 ```

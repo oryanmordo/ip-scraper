@@ -1,5 +1,10 @@
+import functools
+import json
 import time
 from functools import wraps
+
+from utils.redis_client import RedisCache
+
 
 def time_execution(func):
     @wraps(func)
@@ -46,3 +51,31 @@ def time_api_response(func):
         return result
 
     return wrapper
+
+
+def redis_cache(ttl: int = 10):
+    def decorator(func):
+        @functools.wraps(func)
+        async def wrapper(self, ip: str, *args, **kwargs):
+            redis = await RedisCache.get_client()
+            # Create a unique key based on the class name and the IP
+            cache_key = f"cache:{self.__class__.__name__}:{ip}"
+
+            # 1. Try to get from Redis
+            cached_data = await redis.get(cache_key)
+            if cached_data:
+                # Return the service name (first element) and the data
+                return self.service_name, json.loads(cached_data)
+
+            # 2. Run the actual fetch method
+            service_name, data = await func(self, ip, *args, **kwargs)
+
+            # 3. Store in Redis
+            if data:
+                await redis.setex(cache_key, ttl, json.dumps(data))
+
+            return service_name, data
+
+        return wrapper
+
+    return decorator

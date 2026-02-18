@@ -8,6 +8,7 @@ dependencies = [
     "aiohttp>=3.13.3",
     "async-cache>=1.2.1",
     "fastapi[standard]>=0.129.0",
+    "redis>=7.2.0",
 ]
 [tool.uv]
 package = true
