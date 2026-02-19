@@ -43,7 +43,8 @@ Query `http://ip-api.com/json/176.228.193.161` (and the other API).
 ### Tips
 - **Metrics**: In the total section, if one fails, all fail.
 - **Cache**: Must support 10 seconds expiration (fast and efficient).
-- **Scalability**: Build for scale (currently 2 APIs, but potentially many more in the future).
+- **Scalability**: Build for scale (currently 2 APIs, but potentially many more in the future):
+  - [x] Redis instance
 
 ### Key Requirements
 - [x] Correct Output
