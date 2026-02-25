@@ -12,5 +12,4 @@ class IPInfoFetcher(DataFetcher):
     @time_execution
     @redis_cache(ttl=10)
     async def fetch(self,ip: str):
-
         return self.service_name, await self._get_data(ip, self.headers)
