@@ -15,7 +15,6 @@ class DataFetcher(ABC):
     async def fetch(self, ip: str):
         pass
     
-
     async def _get_data(self, endpoint: str, headers: dict = None) -> dict:
         url = f"{self.api_url}{endpoint}"
         session = PersistentSession.session
